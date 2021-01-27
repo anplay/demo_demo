@@ -16,7 +16,7 @@ public class GoogleTest {
   public TestRule report = new TextReport().onFailedTest(true).onSucceededTest(true);
 
   @Test
-  public void search_selenide_in_google() {
+  public void searchSelenideInGoogle() {
     open("https://google.com/ncr");
     $(By.name("q")).val("selenide").pressEnter();
     $$("#res .g").shouldHave(sizeGreaterThan(1));
