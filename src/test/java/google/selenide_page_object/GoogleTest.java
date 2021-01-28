@@ -7,12 +7,15 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
 public class GoogleTest {
+
+  public GooglePage googlePage = new GooglePage();
+  public SearchResultsPage results = new SearchResultsPage();
+
   @Test
   public void userCanSearch() {
     open("https://google.com/ncr");
-    new GooglePage().searchFor("selenide");
+    googlePage.searchFor("selenide");
 
-    SearchResultsPage results = new SearchResultsPage();
     results.getResults().shouldHave(sizeGreaterThan(1));
     results.getResult(0).shouldHave(text("Selenide: concise UI tests in Java"));
   }
